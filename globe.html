@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>F*CK PACE · Globo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --mono: 'Space Mono', ui-monospace, monospace;
+    --bg: #0A0A0A;
+    --fg: #FFFFFF;
+    --dim: rgba(255,255,255,0.45);
+    --dimmer: rgba(255,255,255,0.18);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: #050505;
+    color: var(--fg);
+    font-family: var(--mono);
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: 16px;
+    overflow: hidden;
+  }
+  /* bare mode: just the spinning globe on a transparent bg (for small embeds) */
+  body.bare { background: transparent; padding: 0; }
+  body.bare .stage { background: transparent; width: 100%; }
+  body.bare .stage::before,
+  body.bare .stage::after,
+  body.bare .bracket,
+  body.bare .hud { display: none; }
+  body.bare .globe-wrap svg { width: 92%; filter: none; }
+
+  /* Square stage that scales with the viewport */
+  .stage {
+    position: relative;
+    width: min(92vw, 92svh, 720px);
+    aspect-ratio: 1 / 1;
+    background: var(--bg);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  /* dashed grid */
+  .stage::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, var(--dimmer) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--dimmer) 1px, transparent 1px);
+    background-size: 7.5% 7.5%;
+    mask-image: radial-gradient(ellipse 100% 95% at 50% 50%, #000 35%, transparent 96%);
+    -webkit-mask-image: radial-gradient(ellipse 100% 95% at 50% 50%, #000 35%, transparent 96%);
+    opacity: 0.5;
+    z-index: 0;
+    animation: gridBreathe 4s ease-in-out infinite;
+  }
+  /* scanlines */
+  .stage::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0) 0px,
+      rgba(255,255,255,0) 2px,
+      rgba(255,255,255,0.04) 3px,
+      rgba(255,255,255,0) 4px
+    );
+    mix-blend-mode: screen;
+    z-index: 3;
+    animation: scanShift 8s linear infinite;
+  }
+
+  /* corner brackets */
+  .bracket {
+    position: absolute;
+    width: 26px; height: 26px;
+    border: 1.5px solid var(--fg);
+    z-index: 4;
+  }
+  .b-tl { top: 16px; left: 16px;     border-right: none; border-bottom: none; }
+  .b-tr { top: 16px; right: 16px;    border-left: none;  border-bottom: none; }
+  .b-bl { bottom: 16px; left: 16px;  border-right: none; border-top: none; }
+  .b-br { bottom: 16px; right: 16px; border-left: none;  border-top: none; }
+
+  /* globe */
+  .globe-wrap {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    z-index: 2;
+  }
+  .globe-wrap svg {
+    width: 64%;
+    height: auto;
+    display: block;
+    overflow: visible;
+    filter: drop-shadow(0 0 40px rgba(0,0,0,0.35));
+  }
+
+  /* HUD */
+  .hud {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 22px 18px;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--dim);
+    z-index: 4;
+  }
+
+  @keyframes scanShift { from { background-position: 0 0; } to { background-position: 0 100px; } }
+  @keyframes gridBreathe { 0%, 100% { opacity: 0.5; } 50% { opacity: 0.7; } }
+
+  @media (max-width: 480px) {
+    .globe-wrap svg { width: 74%; }
+    .bracket { width: 20px; height: 20px; }
+    .hud { font-size: 9px; letter-spacing: 0.12em; padding: 0 16px 14px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="stage">
+    <div class="bracket b-tl"></div>
+    <div class="bracket b-tr"></div>
+    <div class="bracket b-bl"></div>
+    <div class="bracket b-br"></div>
+
+    <div class="globe-wrap" id="globeWrap" aria-hidden="true"></div>
+
+    <div class="hud">
+      <span>RUNNING_COSMOS / SECTOR_034</span>
+      <span>▢ TRACKING</span>
+    </div>
+  </div>
+
+  <script>
+    // Build the wireframe globe SVG (latitude rings + longitude meridians + axis).
+    function buildGlobe(color) {
+      const r = 100;
+      const parallels = 9;   // latitude lines
+      const meridians = 16;  // longitude lines
+      const SVGNS = 'http://www.w3.org/2000/svg';
+
+      const svg = document.createElementNS(SVGNS, 'svg');
+      svg.setAttribute('viewBox', '-130 -130 260 260');
+
+      // gradient def for a subtle edge fade
+      const defs = document.createElementNS(SVGNS, 'defs');
+      defs.innerHTML =
+        '<radialGradient id="globeFade" cx="50%" cy="50%" r="50%">' +
+        '<stop offset="0%" stop-color="' + color + '" stop-opacity="1"/>' +
+        '<stop offset="70%" stop-color="' + color + '" stop-opacity="0.9"/>' +
+        '<stop offset="100%" stop-color="' + color + '" stop-opacity="0.55"/>' +
+        '</radialGradient>';
+      svg.appendChild(defs);
+
+      const add = (tag, attrs) => {
+        const el = document.createElementNS(SVGNS, tag);
+        for (const k in attrs) el.setAttribute(k, attrs[k]);
+        svg.appendChild(el);
+        return el;
+      };
+
+      // outer circle
+      add('circle', { cx: 0, cy: 0, r: r, fill: 'none', stroke: color, 'stroke-width': 1.2 });
+
+      // latitude rings
+      for (let i = 1; i < parallels; i++) {
+        const t = i / parallels;
+        const y = -r + 2 * r * t;
+        const rx = r * Math.sin(Math.PI * t);
+        add('ellipse', { cx: 0, cy: y, rx: rx, ry: rx * 0.18, fill: 'none', stroke: 'url(#globeFade)', 'stroke-width': 1, opacity: 0.85 });
+      }
+
+      // longitude meridians (animated for the 3D spin)
+      for (let i = 0; i < meridians; i++) {
+        const phi = (i / meridians) * Math.PI;
+        const rx = Math.abs(r * Math.cos(phi));
+        add('ellipse', { class: 'lon', 'data-phi': phi, cx: 0, cy: 0, rx: rx, ry: r, fill: 'none', stroke: color, 'stroke-width': 1, opacity: 0.85 });
+      }
+
+      // axis line + center point
+      add('line', { x1: 0, y1: -r, x2: 0, y2: r, stroke: color, 'stroke-width': 1, opacity: 0.9 });
+      add('circle', { cx: 0, cy: 0, r: 1.5, fill: color });
+
+      return svg;
+    }
+
+    document.getElementById('globeWrap').appendChild(buildGlobe('#FFFFFF'));
+    // bare mode via ?bare=1 — strips chrome, transparent bg, for small embeds
+    if (new URLSearchParams(location.search).get('bare') === '1') {
+      document.body.classList.add('bare');
+    }
+
+    // ── 3D spin: sweep the longitude meridians around the vertical axis ──
+    // Each meridian's apparent width = R·cos(phi + t); latitudes stay fixed.
+    // Front-facing meridians (wide) read brighter, edge-on ones dim — depth.
+    (function () {
+      const R = 100;
+      const PERIOD = 60000; // ms for a full revolution
+      const lon = Array.from(document.querySelectorAll('.lon')).map(function (el) {
+        return { el: el, phi: parseFloat(el.getAttribute('data-phi')) };
+      });
+      let start = null;
+      function frame(now) {
+        if (start === null) start = now;
+        const t = ((now - start) / PERIOD) * Math.PI * 2;
+        for (let i = 0; i < lon.length; i++) {
+          const c = Math.cos(lon[i].phi + t);
+          lon[i].el.setAttribute('rx', Math.abs(R * c).toFixed(2));
+          // depth: wide (facing) meridians brighter; edge-on fade out
+          lon[i].el.setAttribute('opacity', (0.22 + 0.7 * Math.abs(c)).toFixed(3));
+        }
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    })();
+  </script>
+
+</body>
+</html>

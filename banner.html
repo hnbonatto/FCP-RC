@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>F*CK PACE · Banner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&family=Archivo+Black&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --display: 'Archivo Black', sans-serif;
+    --sans: 'Space Grotesk', sans-serif;
+    --mono: 'Space Mono', ui-monospace, monospace;
+    --bg: #0A0A0A;
+    --fg: #FFFFFF;
+    --dim: rgba(255,255,255,0.45);
+    --dimmer: rgba(255,255,255,0.18);
+    --accent: #F2703B;
+    --accent-hot: #FF5A1F;
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body { height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100svh;
+    overflow-x: hidden;
+  }
+
+  /* ───── Stage ───── */
+  .stage {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 46px; /* room for the top ticker */
+  }
+  /* Embed mode: hug the content (no forced full-screen) so there's no big
+     empty gap on tall phones; comfortable vertical padding instead. */
+  body.is-embed { overflow: visible; }
+  body.is-embed .stage { min-height: auto; }
+  body.is-embed .inner { padding-top: clamp(28px, 6vh, 64px); padding-bottom: clamp(28px, 6vh, 64px); }
+  /* dashed grid */
+  .stage::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(to right, var(--dimmer) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--dimmer) 1px, transparent 1px);
+    background-size: 78px 78px;
+    mask-image: radial-gradient(ellipse 110% 90% at 35% 50%, #000 35%, transparent 95%);
+    -webkit-mask-image: radial-gradient(ellipse 110% 90% at 35% 50%, #000 35%, transparent 95%);
+    opacity: 0.5;
+    z-index: 0;
+  }
+  /* scanlines */
+  .stage::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0) 0px,
+      rgba(255,255,255,0) 2px,
+      rgba(255,255,255,0.035) 3px,
+      rgba(255,255,255,0) 4px
+    );
+    mix-blend-mode: screen;
+    opacity: 0.7;
+    z-index: 1;
+  }
+
+  /* ───── Top ticker ───── */
+  .ticker {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 46px;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-bottom: 1px solid var(--dimmer);
+    background: var(--bg);
+  }
+  .ticker-track {
+    display: flex;
+    white-space: nowrap;
+    animation: tickerScroll 40s linear infinite;
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 13px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--fg);
+  }
+  .ticker-track span { padding-right: 0; }
+  @keyframes tickerScroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ───── Vertical sidebars ───── */
+  .vert {
+    position: fixed;
+    top: 46px; bottom: 0;
+    width: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .vert-l { left: 0; border-right: 1px solid var(--dimmer); }
+  .vert-r { right: 0; border-left: 1px solid var(--dimmer); }
+  .vert span {
+    font-family: var(--display);
+    font-size: 13px;
+    letter-spacing: 0.34em;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+  .vert-l span { transform: rotate(-90deg); }
+  .vert-r span { transform: rotate(90deg); }
+
+  /* ───── Content ───── */
+  .inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: clamp(40px, 7vw, 96px) clamp(48px, 8vw, 120px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(22px, 3vw, 30px);
+  }
+  .copy {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(22px, 3vw, 30px);
+    width: 100%;
+    max-width: min(560px, 100%);
+    min-width: 0;
+    container-type: inline-size;
+  }
+
+  /* ───── Tagline + inline globe (scale with the column via cqw) ───── */
+  .tagline-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(12px, 4cqw, 40px);
+  }
+  .globe-panel {
+    position: relative;
+    flex: 0 0 auto;
+    width: clamp(72px, 24cqw, 150px);
+    aspect-ratio: 1 / 1;
+    margin: clamp(-30px, -3vw, -18px) 0;  /* let the globe bleed past the 2-line tagline height */
+  }
+  .globe-panel iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dim);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .eyebrow .dot { color: var(--fg); }
+
+  .headline {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 120px; /* JS fits this to the column width */
+    line-height: 0.86;
+    letter-spacing: -0.025em;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .headline span { white-space: nowrap; }
+
+  .tagline {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(13px, 5cqw, 20px);
+    line-height: 1.22;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    min-width: 0;
+  }
+  .tagline div { white-space: nowrap; }
+
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px clamp(18px, 4vw, 40px);
+    padding-top: 14px;
+    border-top: 1px solid var(--dimmer);
+  }
+  .meta { display: flex; flex-direction: column; gap: 7px; }
+  .meta-label {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+  .meta-value {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(14px, 1.4vw, 16px);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ───── CTA ───── */
+  .cta-block { display: flex; flex-direction: column; gap: 14px; margin-top: 4px; }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 22px 30px;
+    background: var(--accent);
+    color: #0A0A0A;
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(15px, 1.5vw, 18px);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--accent);
+    width: 100%;
+    cursor: pointer;
+    transition: background 140ms var(--ease), transform 140ms var(--ease);
+    animation: ctaPulse 2.2s ease-in-out infinite;
+  }
+  .cta:hover { background: var(--accent-hot); transform: translateY(-1px); }
+  .cta > span { white-space: nowrap; }
+  .cta-arrow { font-family: var(--mono); font-size: 15px; animation: ctaArrowBounce 1.3s ease-in-out infinite; }
+  .cta-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    opacity: 0.65;
+    padding-left: 6px;
+    border-left: 1px solid currentColor;
+    margin-left: auto;
+  }
+  .spots {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dim);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .blink { color: var(--accent); animation: blink 1s steps(2, start) infinite; }
+
+  @keyframes ctaPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(242,112,59,0.55); }
+    50%      { box-shadow: 0 0 0 13px rgba(242,112,59,0); }
+  }
+  @keyframes ctaArrowBounce {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(4px); }
+  }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+  /* ───── Responsive ───── */
+  @media (max-width: 540px) {
+    .vert { display: none; }
+    .inner { padding: 32px 24px; }
+    .copy { gap: 16px; max-width: 100%; }
+    .cta-meta { display: none; }
+    .cta { justify-content: center; padding: 18px 22px; }
+    .meta-value { font-size: clamp(13px, 4.4cqw, 16px); }
+  }
+  /* Short screens (phones in portrait): tighten vertical rhythm. */
+  @media (max-height: 760px) {
+    .stage { padding-top: 44px; }
+    .inner { padding-top: 24px; padding-bottom: 24px; gap: 14px; }
+    .copy { gap: 14px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="stage">
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span id="ticker-a"></span>
+        <span id="ticker-b"></span>
+      </div>
+    </div>
+    <div class="vert vert-l" aria-hidden="true"><span>NO ONE LEFT BEHIND · NO ONE LEFT BEHIND · NO ONE LEFT BEHIND</span></div>
+    <div class="vert vert-r" aria-hidden="true"><span>NO ONE LEFT BEHIND · NO ONE LEFT BEHIND · NO ONE LEFT BEHIND</span></div>
+
+    <div class="inner">
+      <div class="copy">
+      <div class="eyebrow">
+        <span class="dot">◉</span> RUNNING_CLUB_BOOT
+        <span>/ BOOT_V1 / LONGSLEEVE</span>
+      </div>
+
+      <h1 class="headline">
+        <span>F*CK</span>
+        <span>PACE</span>
+      </h1>
+
+      <div class="tagline-row">
+        <div class="tagline">
+          <div>UNLOCK THE ENERGY</div>
+          <div>OF THE RUNING COSMOS</div>
+        </div>
+        <div class="globe-panel" aria-hidden="true">
+          <iframe src="globe.html?bare=1" title="F*CK PACE · Globo" scrolling="no"></iframe>
+        </div>
+      </div>
+
+      <div class="meta-row">
+        <div class="meta">
+          <div class="meta-label">DROP</div>
+          <div class="meta-value">DROP 2</div>
+        </div>
+        <div class="meta">
+          <div class="meta-label">EDITION</div>
+          <div class="meta-value">WINTER COLLECTION</div>
+        </div>
+        <div class="meta">
+          <div class="meta-label">ACCESS</div>
+          <div class="meta-value">MEMBERS ONLY</div>
+        </div>
+      </div>
+
+      <div class="cta-block">
+        <a href="FCK PACE Pre-Order.html" class="cta">
+          <span class="cta-arrow">▼</span>
+          <span>FAÇA SEU PEDIDO</span>
+          <span class="cta-meta">/ NO_RETURNS</span>
+        </a>
+        <div class="spots"><span class="blink">●</span> 217 / 300 SPOTS REMAINING</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Make the F*CK PACE wordmark FILL the content column, then everything
+    // (tagline, meta, CTA, spots) shares that exact width — fully responsive.
+    (function () {
+      var copy = document.querySelector('.copy');
+      var headline = document.querySelector('.headline');
+      var spans = headline.querySelectorAll('span');
+      var taglineRow = document.querySelector('.tagline-row');
+      var tagline = document.querySelector('.tagline');
+      var taglineLines = tagline.querySelectorAll('div');
+      var globePanel = document.querySelector('.globe-panel');
+
+      function fit() {
+        var cw = copy.clientWidth;
+        if (!cw) return;
+        // probe at a known size, measure the widest line, then scale to fill
+        headline.style.fontSize = '200px';
+        var nat = 0;
+        spans.forEach(function (s) { nat = Math.max(nat, s.getBoundingClientRect().width); });
+        if (!nat) return;
+        var fs = 200 * (cw / nat);
+        fs = Math.max(40, Math.min(fs, 240));
+        headline.style.fontSize = fs + 'px';
+
+        // Shrink the tagline so it always fits BESIDE the globe (never overlaps).
+        tagline.style.fontSize = '';
+        var gap = parseFloat(getComputedStyle(taglineRow).columnGap) || 16;
+        var avail = cw - globePanel.offsetWidth - gap - 2;
+        if (avail > 0) {
+          var widest = 0;
+          taglineLines.forEach(function (l) { widest = Math.max(widest, l.scrollWidth); });
+          if (widest > avail) {
+            var cur = parseFloat(getComputedStyle(tagline).fontSize);
+            tagline.style.fontSize = Math.max(10, Math.floor(cur * avail / widest)) + 'px';
+          }
+        }
+      }
+
+      window.addEventListener('resize', fit);
+      window.addEventListener('load', fit);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+      fit();
+    })();
+
+    // ── Top ticker: rolling brand line with a live UTC timestamp ──
+    (function () {
+      var a = document.getElementById('ticker-a');
+      var b = document.getElementById('ticker-b');
+      function build() {
+        var stamp = new Date().toISOString().replace('T', ' ').slice(0, 19) + 'Z';
+        var msg = '▶ F*CK PACE // NO ONE LEFT BEHIND // ONLY MEMBERS // DROP 12.06.2026 // RUNNING_CLUB_BOOT v.1 // PRE-ORDER OPEN // ' + stamp + ' // ';
+        // repeat so each half of the track is wide enough for a seamless loop
+        var half = msg + msg + msg;
+        a.textContent = half;
+        b.textContent = half;
+      }
+      build();
+      setInterval(build, 1000);
+    })();
+
+    // ── Embed mode (?embed=1): hero header inside the order page. Reports its
+    //    height so the parent frames it to ≥ one screen (100svh) but never clips
+    //    the CTA on short screens. The CTA scrolls the parent to the form. ──
+    (function () {
+      var isEmbed = new URLSearchParams(location.search).get('embed') === '1';
+      if (!isEmbed) return;
+      document.body.classList.add('is-embed');
+      var stage = document.querySelector('.stage');
+      function report() {
+        var h = Math.max(stage ? stage.offsetHeight : 0, document.documentElement.scrollHeight);
+        parent.postMessage({ type: 'fp-hero-height', h: h }, '*');
+      }
+      report();
+      if (window.ResizeObserver) new ResizeObserver(report).observe(document.body);
+      window.addEventListener('load', report);
+      window.addEventListener('resize', report);
+      setTimeout(report, 400); setTimeout(report, 1200);
+      // CTA scrolls the parent to the form instead of navigating
+      var cta = document.querySelector('.cta');
+      if (cta) cta.addEventListener('click', function (e) {
+        e.preventDefault();
+        parent.postMessage({ type: 'fp-hero-cta' }, '*');
+      });
+    })();
+  </script>
+
+</body>
+</html>

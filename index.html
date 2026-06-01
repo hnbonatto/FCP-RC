@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>F*CK PACE · DROP 2 · Landing</title>
+  <link rel="stylesheet" href="orders.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script>
+    var IMGS = {
+      mc_branca: 'https://lh7-rt.googleusercontent.com/formsz/AN7BsVCZY4815X-jByMRcSc4BjkLg-smC-fsw__bhHT7ngvrwysxjc5gz0X8v80_ajsk4hPJCIY-WnZgZJOC2I7AnPi9MrcfZo9gJmhftDYkHTOD9pvhNJDnjN0zrbYWil6iphY1pwOB_tZkMIzPfkBxAlF0OLGNm6QK8msowmLrf4i4_gAhSs8cmpcC01-IBHIubSSCB3dJd93c0gcy=w740?key=FLw7ew20KoKOQmVA9fNw1w',
+      mc_preta:  'https://lh7-rt.googleusercontent.com/formsz/AN7BsVApZMF87vZjd9sQWoeoL5iHephegaVsReEcnOM6RRuAaQJZpxNjlAz8ChGB7fyURYdVySxOdUfn0VrsrljPtIVzmF15NDbzpiBLfjPcwTKH4Ebgaeol6NL9KGV47a28qZCGnl34rux-NVHR2a3_UG4uc6gv2URHS-4NJeKKi1yq4FEfEI6Vv35mCtqWQpukMY_Eo6tR1_tc0LMW=w740?key=FLw7ew20KoKOQmVA9fNw1w',
+      ml_branca: 'https://lh7-rt.googleusercontent.com/formsz/AN7BsVDe7OvtwcHdG_OU_0LOYtIYEHEbKCYwhkv6yMQ5N5Qxkt6VPuG4gUjQuDk66AP8nGI2xiQswUdbVnHuURxXsLz9rgcSLU6zLHn6rZn_gfMVQ5oLBMIbMW90zaC6lVKU-ZA3g8OslT4AilnYPnUoEQNuf3KLHNSDJ157tF2EuHvN12pPxJwGZxJ7RAJ2-lGjIGTHyyPIxGwBIMVP=w740?key=FLw7ew20KoKOQmVA9fNw1w',
+      ml_preta:  'https://lh7-rt.googleusercontent.com/formsz/AN7BsVAEPogNPsBi969CsnHwawnRceqYu9U6dajUPyybCBkXFAYWZzMZjCbkoendmAa1paFrlEo_WLxMI4vWrguRU1oR0jp_ACwmujkY3mGrXnmS1BcMJ0h__1yyRZkPrABG0V7XxuDFJzgoLtRU7sUzNOY0OegVluiGH0TWJYNJD_ocqAYdbr_LNEX-7Zo4yV_ymL6E6fTh-_MADug=w740?key=FLw7ew20KoKOQmVA9fNw1w',
+      bone_rc:   'https://lh7-rt.googleusercontent.com/formsz/AN7BsVDFEvEMM0SHKYf7VzG1rmUYEgRG5AU309BcYmYlWNjkEC49yjSrmyzedqGT7Q0niodh3i1AsxAbg2FaI2OyV1HVCHlVddBj45Xg4D4EfBGEDcX203uX0H7-79FfoYPRcA1ALMzsHfQ6ayXb1ultq7PcLG7rj992Y3Tf9aebi1eCdn3PuxUmgrofuauoLjkWQwf4uZS9VlJNlhca=w740?key=FLw7ew20KoKOQmVA9fNw1w',
+      bone_globo:'https://lh7-rt.googleusercontent.com/formsz/AN7BsVA0eXaesXclZqmyiCU9fiLBcS8g6ij-AjkZLMmzq0GELTtWNl9K37-9uHJw7-GiPYpBTZ1tIZs_0v8cDBsqXx2todJiYLYW2Vt2RiTaHcQWErwEhmKgheZFwBxCQGoSlP6R5ixDpxZGkjfz0VcDZQ2OSgR56RJ3wsA3TXnXPwWgZnAAtvjDW9OON69zijD4V5d26TrhP_Gcco_n=w740?key=FLw7ew20KoKOQmVA9fNw1w'
+    };
+  </script>
+</head>
+<body>
+
+<div class="fp-stage">
+
+  <!-- HERO BANNER (embedded FCK PACE Banner) -->
+  <section class="fp-hero-banner" aria-label="F*CK PACE">
+    <iframe id="hero-frame" src="banner.html?embed=1" title="F*CK PACE" scrolling="no"></iframe>
+  </section>
+
+  <!-- VERTICAL SIDEBARS -->
+  <div class="fp-vert fp-vert-l" aria-hidden="true">
+    <span>NO ONE LEFT BEHIND · NO ONE LEFT BEHIND · NO ONE LEFT BEHIND</span>
+  </div>
+  <div class="fp-vert fp-vert-r" aria-hidden="true">
+    <span>NO ONE LEFT BEHIND · NO ONE LEFT BEHIND · NO ONE LEFT BEHIND</span>
+  </div>
+
+  <!-- DROP BAR -->
+  <div class="fp-drop-bar" id="form-top">
+    <span>PRÉ-VENDA ABERTA</span>
+    <span class="fp-drop-bar-sep"></span>
+    <span>ONLY MEMBERS</span>
+  </div>
+
+  <main class="fp-container" id="form-container">
+
+    <!-- STEP TABS -->
+    <nav class="steps">
+      <button class="step-btn active" id="tab2" data-num="[01]" onclick="goTo(2)" type="button">
+        <span class="step-btn-sub">STEP_01</span>
+        <span class="step-btn-label">Produtos</span>
+      </button>
+      <button class="step-btn" id="tab3" data-num="[02]" onclick="goTo(3)" type="button">
+        <span class="step-btn-sub">STEP_02</span>
+        <span class="step-btn-label">Pagamento</span>
+      </button>
+    </nav>
+
+    <!-- ═════ STEP 1 — PRODUTOS ═════ -->
+    <section class="section active" id="sec2">
+      <p class="section-title">SELECIONE SEUS PRODUTOS</p>
+
+      <!-- ── FIG.01 · Combo 2 Camisetas + Boné ── -->
+      <div class="prod-tile" id="tile-combo2" onclick="toggleProduct('combo2')">
+        <div class="tile-left">
+          <span class="tile-index">FIG.01</span>
+          <span class="tile-name">Combo · 2 Camisetas + Boné</span>
+          <span class="tile-qty-badge" id="badge-combo2">0</span>
+        </div>
+        <div class="tile-right">
+          <span class="tile-price">R$ 250</span>
+          <span class="tile-arrow" id="arrow-combo2">▸</span>
+        </div>
+      </div>
+      <div class="prod-detail" id="detail-combo2">
+        <p class="detail-sub">Melhor combo · 2 Camisetas + Boné da sua escolha</p>
+
+        <div class="fp-showcase fp-showcase-inline">
+          <div class="fp-showcase-eyebrow">
+            <span>▣</span>
+            <span id="loop-label-c2s1">CAMISETA 1 · MANGA CURTA BRANCA</span>
+            <span>▣</span>
+          </div>
+          <div class="fp-showcase-frame">
+            <div class="fp-showcase-bracket fp-showcase-bracket-tl"></div>
+            <div class="fp-showcase-bracket fp-showcase-bracket-tr"></div>
+            <div class="fp-showcase-bracket fp-showcase-bracket-bl"></div>
+            <div class="fp-showcase-bracket fp-showcase-bracket-br"></div>
+            <iframe id="loop-c2s1" src="product-loop.html?product=mc-branca&mini=1" title="F*CK PACE — loop animado"></iframe>
+          </div>
+          <div class="fp-showcase-foot">
+            <span>FRENTE / VERSO · ROTATING</span>
+            <span>GLITCH · F*CK PACE</span>
+          </div>
+        </div>
+
+        <div class="row-label">Camiseta 1 · Manga</div>
+        <div class="color-row" id="sleeve-c2s1">
+          <div class="color-chip active" data-sleeve="mc" onclick="selectC2Sleeve(1,'mc',this);event.stopPropagation()">Manga Curta</div>
+          <div class="color-chip" data-sleeve="ml" onclick="selectC2Sleeve(1,'ml',this);event.stopPropagation()">Manga Longa</div>
+        </div>
+        <div class="row-label">Camiseta 1 · Cor</div>
+        <div class="color-row" id="color-c2s1">
+          <div class="color-chip active" data-color="branca" onclick="selectC2Color(1,'branca',this);event.stopPropagation()"><div class="color-dot dot-white"></div>Branca</div>
+          <div class="color-chip" data-color="preta" onclick="selectC2Color(1,'preta',this);event.stopPropagation()"><div class="color-dot dot-black"></div>Preta</div>
+        </div>
+        <div class="row-label">Camiseta 1 · Tamanho</div>
+        <div class="size-grid" id="size-c2s1">
+          <button class="size-btn" onclick="selectC2Size(1,'PP',this);event.stopPropagation()" type="button">PP</button>
+          <button class="size-btn" onclick="selectC2Size(1,'P',this);event.stopPropagation()" type="button">P</button>
+          <button class="size-btn" onclick="selectC2Size(1,'M',this);event.stopPropagation()" type="button">M</button>
+          <button class="size-btn" onclick="selectC2Size(1,'G',this);event.stopPropagation()" type="button">G</button>
+          <button class="size-btn" onclick="selectC2Size(1,'GG',this);event.stopPropagation()" type="button">GG</button>
+        </div>
+        <div class="err" id="err-size-c2s1">Selecione o tamanho da camiseta 1.</div>
+
+        <div class="fp-showcase fp-showcase-inline">
+          <div class="fp-showcase-eyebrow">
+            <span>▣</span>
+            <span id="loop-label-c2s2">CAMISETA 2 · MANGA CURTA BRANCA</span>
+            <span>▣</span>
+          </div>
+          <div class="fp-showcase-frame">
+            <div class="fp-showcase-bracket fp-showcase-bracket-tl"></div>
+            <div class="fp-showcase-bracket fp-showcase-bracket-tr"></div>
+            <div class="fp-showcase-bracket fp-showcase-bracket-bl"></div>
+            <div class="fp-showcase-bracket fp-showcase-bracket-br"></div>
+            <iframe id="loop-c2s2" src="product-loop.html?product=mc-branca&mini=1" title="F*CK PACE — loop animado"></iframe>
+          </div>
+          <div class="fp-showcase-foot">
+            <span>FRENTE / VERSO · ROTATING</span>
+            <span>GLITCH · F*CK PACE</span>
+          </div>
+        </div>
+
+        <div class="row-label" style="margin-top:6px">Camiseta 2 · Manga</div>
+        <div class="color-row" id="sleeve-c2s2">
+          <div class="color-chip active" data-sleeve="mc" onclick="selectC2Sleeve(2,'mc',this);event.stopPropagation()">Manga Curta</div>
+          <div class="color-chip" data-sleeve="ml" onclick="selectC2Sleeve(2,'ml',this);event.stopPropagation()">Manga Longa</div>
+        </div>
+        <div class="row-label">Camiseta 2 · Cor</div>
+        <div class="color-row" id="color-c2s2">
+          <div class="color-chip active" data-color="branca" onclick="selectC2Color(2,'branca',this);event.stopPropagation()"><div class="color-dot dot-white"></div>Branca</div>
+          <div class="color-chip" data-color="preta" onclick="selectC2Color(2,'preta',this);event.stopPropagation()"><div class="color-dot dot-black"></div>Preta</div>
+        </div>
+        <div class="row-label">Camiseta 2 · Tamanho</div>
+        <div class="size-grid" id="size-c2s2">
+          <button class="size-btn" onclick="selectC2Size(2,'PP',this);event.stopPropagation()" type="button">PP</button>
+          <button class="size-btn" onclick="selectC2Size(2,'P',this);event.stopPropagation()" type="button">P</button>
+          <button class="size-btn" onclick="selectC2Size(2,'M',this);event.stopPropagation()" type="button">M</button>
+          <button class="size-btn" onclick="selectC2Size(2,'G',this);event.stopPropagation()" type="button">G</button>
+          <button class="size-btn" onclick="selectC2Size(2,'GG',this);event.stopPropagation()" type="button">GG</button>
+        </div>
+        <div class="err" id="err-size-c2s2">Selecione o tamanho da camiseta 2.</div>
+
+        <div class="row-label" style="margin-top:6px">Modelo do Boné</div>
+        <div class="color-row" id="bone-combo2">
+          <div class="color-chip active" data-bone="rc" onclick="selectC2Bone('rc',this);event.stopPropagation()">Running Club</div>
+          <div class="color-chip" data-bone="globo" onclick="selectC2Bone('globo',this);event.stopPropagation()">Globo</div>
+        </div>
+        <div class="product-photo" style="margin-bottom:14px"><img id="img-combo2-bone" src="" alt="Boné do Combo" /></div>
+        <div class="qty-row">
+          <span class="qty-label">Quantidade</span>
+          <div class="qty-controls">
+            <button class="qty-btn" onclick="changeQty('combo2',-1);event.stopPropagation()" type="button">−</button>
+            <input class="qty-value" id="qty-combo2" value="0" readonly />
+            <button class="qty-btn" onclick="changeQty('combo2',1);event.stopPropagation()" type="button">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── FIG.02 · Combo Camiseta + Boné ── -->
+      <div class="prod-tile" id="tile-combo" onclick="toggleProduct('combo')">
+        <div class="tile-left">
+          <span class="tile-index">FIG.02</span>
+          <span class="tile-name">Combo · Camiseta + Boné</span>
+          <span class="tile-qty-badge" id="badge-combo">0</span>
+        </div>
+        <div class="tile-right">
+          <span class="tile-price">R$ 180</span>
+          <span class="tile-arrow" id="arrow-combo">▸</span>
+        </div>
+      </div>
+      <div class="prod-detail" id="detail-combo">
+        <p class="detail-sub">10% OFF · Camiseta + Boné da sua escolha</p>
+        <div class="fp-showcase fp-showcase-inline">
+          <div class="fp-showcase-eyebrow">
+            <span>▣</span>
+            <span id="loop-label-combo">LIVE PREVIEW · MANGA CURTA BRANCA</span>
+            <span>▣</span>
+          </div>
+          <div class="fp-showcase-frame">
+            <div class="fp-showcase-bracket fp-showcase-bracket-tl"></div>
+            <div class="fp-showcase-bracket fp-showcase-bracket-tr"></div>
+            <div class="fp-showcase-bracket fp-showcase-bracket-bl"></div>
+            <div class="fp-showcase-bracket fp-showcase-bracket-br"></div>
+            <iframe id="loop-combo" src="product-loop.html?product=mc-branca&mini=1" title="F*CK PACE — loop animado"></iframe>
+          </div>
+          <div class="fp-showcase-foot">
+            <span>FRENTE / VERSO · ROTATING</span>
+            <span>GLITCH · F*CK PACE</span>
+          </div>
+        </div>
+        <div class="row-label">Manga</div>
+        <div class="color-row" id="sleeve-combo">
+          <div class="color-chip active" data-sleeve="mc" onclick="selectComboSleeve('mc',this);event.stopPropagation()">Manga Curta</div>
+          <div class="color-chip" data-sleeve="ml" onclick="selectComboSleeve('ml',this);event.stopPropagation()">Manga Longa</div>
+        </div>
+        <div class="row-label">Cor da Camiseta</div>
+        <div class="color-row" id="color-combo">
+          <div class="color-chip active" data-color="branca" onclick="selectColor('combo','branca',this);event.stopPropagation()">
+            <div class="color-dot dot-white"></div>Branca
+          </div>
+          <div class="color-chip" data-color="preta" onclick="selectColor('combo','preta',this);event.stopPropagation()">
+            <div class="color-dot dot-black"></div>Preta
+          </div>
+        </div>
+        <div class="row-label">Tamanho da Camiseta</div>
+        <div class="size-grid" id="size-combo">
+          <button class="size-btn" onclick="selectSize('combo','PP',this);event.stopPropagation()" type="button">PP</button>
+          <button class="size-btn" onclick="selectSize('combo','P',this);event.stopPropagation()" type="button">P</button>
+          <button class="size-btn" onclick="selectSize('combo','M',this);event.stopPropagation()" type="button">M</button>
+          <button class="size-btn" onclick="selectSize('combo','G',this);event.stopPropagation()" type="button">G</button>
+          <button class="size-btn" onclick="selectSize('combo','GG',this);event.stopPropagation()" type="button">GG</button>
+        </div>
+        <div class="err" id="err-size-combo">Selecione o tamanho da camiseta.</div>
+        <div class="row-label" style="margin-top:6px">Modelo do Boné</div>
+        <div class="color-row" id="bone-combo">
+          <div class="color-chip active" data-bone="rc" onclick="selectComboBone('rc',this);event.stopPropagation()">Running Club</div>
+          <div class="color-chip" data-bone="globo" onclick="selectComboBone('globo',this);event.stopPropagation()">Globo</div>
+        </div>
+        <div class="product-photo" style="margin-bottom:14px"><img id="img-combo-bone" src="" alt="Boné do Combo" /></div>
+        <div class="qty-row">
+          <span class="qty-label">Quantidade</span>
+          <div class="qty-controls">
+            <button class="qty-btn" onclick="changeQty('combo',-1);event.stopPropagation()" type="button">−</button>
+            <input class="qty-value" id="qty-combo" value="0" readonly />
+            <button class="qty-btn" onclick="changeQty('combo',1);event.stopPropagation()" type="button">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── FIG.03 · Camiseta Manga Longa ── -->
+      <div class="prod-tile" id="tile-ml" onclick="toggleProduct('ml')">
+        <div class="tile-left">
+          <span class="tile-index">FIG.03</span>
+          <span class="tile-name">Camiseta Manga Longa</span>
+          <span class="tile-qty-badge" id="badge-ml">0</span>
+        </div>
+        <div class="tile-right">
+          <span class="tile-price">R$ 110</span>
+          <span class="tile-arrow" id="arrow-ml">▸</span>
+        </div>
+      </div>
+      <div class="prod-detail" id="detail-ml">
+        <div class="fp-showcase fp-showcase-inline">
+          <div class="fp-showcase-eyebrow">
+            <span>▣</span>
+            <span id="loop-label-ml">LIVE PREVIEW · CAMISETA ML BRANCA</span>
+            <span>▣</span>
+          </div>
+          <div class="fp-showcase-frame">
+            <div class="fp-showcase-bracket fp-showcase-bracket-tl"></div>
+            <div class="fp-showcase-bracket fp-showcase-bracket-tr"></div>
+            <div class="fp-showcase-bracket fp-showcase-bracket-bl"></div>
+            <div class="fp-showcase-bracket fp-showcase-bracket-br"></div>
+            <iframe
+              id="loop-ml"
+              src="product-loop.html?product=ml-branca&mini=1"
+              title="F*CK PACE Camiseta ML — loop animado"
+            ></iframe>
+          </div>
+          <div class="fp-showcase-foot">
+            <span>FRENTE / VERSO · ROTATING</span>
+            <span>GLITCH · F*CK PACE</span>
+          </div>
+        </div>
+        <div class="product-photo" id="photo-ml" hidden><img id="img-ml" src="" alt="Camiseta Manga Longa" /></div>
+        <div class="row-label">Cor</div>
+        <div class="color-row" id="color-ml">
+          <div class="color-chip active" data-color="branca" onclick="selectColor('ml','branca',this);event.stopPropagation()">
+            <div class="color-dot dot-white"></div>Branca
+          </div>
+          <div class="color-chip" data-color="preta" onclick="selectColor('ml','preta',this);event.stopPropagation()">
+            <div class="color-dot dot-black"></div>Preta
+          </div>
+        </div>
+        <div class="row-label">Tamanho</div>
+        <div class="size-grid" id="size-ml">
+          <button class="size-btn" onclick="selectSize('ml','PP',this);event.stopPropagation()" type="button">PP</button>
+          <button class="size-btn" onclick="selectSize('ml','P',this);event.stopPropagation()" type="button">P</button>
+          <button class="size-btn" onclick="selectSize('ml','M',this);event.stopPropagation()" type="button">M</button>
+          <button class="size-btn" onclick="selectSize('ml','G',this);event.stopPropagation()" type="button">G</button>
+          <button class="size-btn" onclick="selectSize('ml','GG',this);event.stopPropagation()" type="button">GG</button>
+        </div>
+        <div class="err" id="err-size-ml">Selecione um tamanho.</div>
+        <div class="qty-row">
+          <span class="qty-label">Quantidade</span>
+          <div class="qty-controls">
+            <button class="qty-btn" onclick="changeQty('ml',-1);event.stopPropagation()" type="button">−</button>
+            <input class="qty-value" id="qty-ml" value="0" readonly />
+            <button class="qty-btn" onclick="changeQty('ml',1);event.stopPropagation()" type="button">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── FIG.04 · Camiseta Manga Curta ── -->
+      <div class="prod-tile" id="tile-mc" onclick="toggleProduct('mc')">
+        <div class="tile-left">
+          <span class="tile-index">FIG.04</span>
+          <span class="tile-name">Camiseta Manga Curta</span>
+          <span class="tile-qty-badge" id="badge-mc">0</span>
+        </div>
+        <div class="tile-right">
+          <span class="tile-price">R$ 100</span>
+          <span class="tile-arrow" id="arrow-mc">▸</span>
+        </div>
+      </div>
+      <div class="prod-detail" id="detail-mc">
+        <div class="fp-showcase fp-showcase-inline">
+          <div class="fp-showcase-eyebrow">
+            <span>▣</span>
+            <span id="loop-label-mc">LIVE PREVIEW · CAMISETA MC BRANCA</span>
+            <span>▣</span>
+          </div>
+          <div class="fp-showcase-frame">
+            <div class="fp-showcase-bracket fp-showcase-bracket-tl"></div>
+            <div class="fp-showcase-bracket fp-showcase-bracket-tr"></div>
+            <div class="fp-showcase-bracket fp-showcase-bracket-bl"></div>
+            <div class="fp-showcase-bracket fp-showcase-bracket-br"></div>
+            <iframe
+              id="loop-mc"
+              src="product-loop.html?product=mc-branca&mini=1"
+              title="F*CK PACE Camiseta MC — loop animado"
+            ></iframe>
+          </div>
+          <div class="fp-showcase-foot">
+            <span>FRENTE / VERSO · ROTATING</span>
+            <span>GLITCH · F*CK PACE</span>
+          </div>
+        </div>
+        <div class="product-photo" id="photo-mc" hidden><img id="img-mc" src="" alt="Camiseta Manga Curta" /></div>
+        <div class="row-label">Cor</div>
+        <div class="color-row" id="color-mc">
+          <div class="color-chip active" data-color="branca" onclick="selectColor('mc','branca',this);event.stopPropagation()">
+            <div class="color-dot dot-white"></div>Branca
+          </div>
+          <div class="color-chip" data-color="preta" onclick="selectColor('mc','preta',this);event.stopPropagation()">
+            <div class="color-dot dot-black"></div>Preta
+          </div>
+        </div>
+        <div class="row-label">Tamanho</div>
+        <div class="size-grid" id="size-mc">
+          <button class="size-btn" onclick="selectSize('mc','PP',this);event.stopPropagation()" type="button">PP</button>
+          <button class="size-btn" onclick="selectSize('mc','P',this);event.stopPropagation()" type="button">P</button>
+          <button class="size-btn" onclick="selectSize('mc','M',this);event.stopPropagation()" type="button">M</button>
+          <button class="size-btn" onclick="selectSize('mc','G',this);event.stopPropagation()" type="button">G</button>
+          <button class="size-btn" onclick="selectSize('mc','GG',this);event.stopPropagation()" type="button">GG</button>
+        </div>
+        <div class="err" id="err-size-mc">Selecione um tamanho.</div>
+        <div class="qty-row">
+          <span class="qty-label">Quantidade</span>
+          <div class="qty-controls">
+            <button class="qty-btn" onclick="changeQty('mc',-1);event.stopPropagation()" type="button">−</button>
+            <input class="qty-value" id="qty-mc" value="0" readonly />
+            <button class="qty-btn" onclick="changeQty('mc',1);event.stopPropagation()" type="button">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── FIG.05 · Boné ── -->
+      <div class="prod-tile" id="tile-bone" onclick="toggleProduct('bone')">
+        <div class="tile-left">
+          <span class="tile-index">FIG.05</span>
+          <span class="tile-name">Boné</span>
+          <span class="tile-qty-badge" id="badge-bone">0</span>
+        </div>
+        <div class="tile-right">
+          <span class="tile-price">R$ 90</span>
+          <span class="tile-arrow" id="arrow-bone">▸</span>
+        </div>
+      </div>
+      <div class="prod-detail" id="detail-bone">
+        <div class="product-photo"><img id="img-bone" src="" alt="Boné" /></div>
+        <div class="row-label">Modelo · Preview</div>
+        <div class="color-row" id="model-bone">
+          <div class="color-chip active" data-model="rc" onclick="selectBonePreview('rc',this);event.stopPropagation()">Running Club</div>
+          <div class="color-chip" data-model="globo" onclick="selectBonePreview('globo',this);event.stopPropagation()">Globo</div>
+        </div>
+        <div class="qty-row">
+          <span class="qty-label">Qtd · Running Club</span>
+          <div class="qty-controls">
+            <button class="qty-btn" onclick="changeQty('bone_rc',-1);event.stopPropagation()" type="button">−</button>
+            <input class="qty-value" id="qty-bone_rc" value="0" readonly />
+            <button class="qty-btn" onclick="changeQty('bone_rc',1);event.stopPropagation()" type="button">+</button>
+          </div>
+        </div>
+        <div class="qty-row">
+          <span class="qty-label">Qtd · Globo</span>
+          <div class="qty-controls">
+            <button class="qty-btn" onclick="changeQty('bone_globo',-1);event.stopPropagation()" type="button">−</button>
+            <input class="qty-value" id="qty-bone_globo" value="0" readonly />
+            <button class="qty-btn" onclick="changeQty('bone_globo',1);event.stopPropagation()" type="button">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="err" id="err-prod" style="margin-top:14px">Adicione ao menos 1 item ao pedido.</div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="step2Next()" type="button" style="flex:1">
+          <span>Ir para Pagamento</span>
+          <span class="btn-arrow">▸</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ═════ STEP 2 — PAGAMENTO ═════ -->
+    <section class="section" id="sec3">
+      <p class="section-title">SEUS DADOS + PAGAMENTO VIA PIX</p>
+
+      <div class="field">
+        <label>Nome Completo <span class="req">*</span></label>
+        <input id="nome" type="text" placeholder="Ex: João da Silva" autocomplete="name" />
+        <div class="err" id="err-nome">Preencha seu nome completo.</div>
+      </div>
+      <div class="field">
+        <label>WhatsApp <span class="req">*</span></label>
+        <input id="tel" type="tel" placeholder="(11) 99999-9999" maxlength="15" autocomplete="tel" />
+        <div class="err" id="err-tel">Informe um telefone válido.</div>
+      </div>
+      <div class="field">
+        <label>CPF <span class="req">*</span></label>
+        <input id="cpf" type="text" placeholder="000.000.000-00" maxlength="14" />
+        <div class="err" id="err-cpf">Informe um CPF válido.</div>
+      </div>
+
+      <div class="cart-box">
+        <div class="cart-box-title">ITENS DO PEDIDO</div>
+        <div id="cart-lines"><div class="cart-empty">— SEM ITENS —</div></div>
+        <div class="cart-total">
+          <span>TOTAL</span>
+          <span class="cart-total-val" id="cart-total-val">R$ 0</span>
+        </div>
+      </div>
+
+      <div class="pix-box">
+        <div class="pix-title">CHAVE PIX</div>
+        <div class="pix-key-row">
+          <span class="pix-key" id="pix-key-display">027.058.670-90</span>
+          <button class="pix-copy" id="btn-copy" onclick="copyPix()" type="button">Copiar</button>
+        </div>
+        <p class="pix-hint">
+          <span class="step-num">01.</span> Copie a chave acima e efetue o PIX no valor exato do pedido.<br>
+          <span class="step-num">02.</span> Faça o upload do comprovante abaixo.<br>
+          <span class="step-num">03.</span> Clique em <strong>Confirmar Pedido</strong> — confirmação no WhatsApp em até 48h.
+        </p>
+      </div>
+
+      <div class="field">
+        <label>Comprovante PIX <span class="req">*</span></label>
+        <div class="upload-area" id="upload-area">
+          <input type="file" id="comprovante" accept="image/*,.pdf" onchange="handleFile(this)" />
+          <div class="upload-icon">↑</div>
+          <div class="upload-text"><strong>CLIQUE OU ARRASTE</strong> o comprovante aqui<br>JPG · PNG · PDF · máx. 10MB</div>
+        </div>
+        <div class="upload-preview" id="upload-preview">
+          <span class="upload-preview-icon" id="upload-preview-icon">IMG</span>
+          <span class="upload-preview-name" id="upload-preview-name">arquivo.jpg</span>
+          <button class="upload-remove" onclick="removeFile()" title="Remover" type="button">✕</button>
+        </div>
+        <div class="err" id="err-comprovante">Anexe o comprovante PIX para prosseguir.</div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(2)" type="button">
+          <span class="btn-arrow">◂</span>
+          <span>Editar</span>
+        </button>
+        <button class="btn btn-submit" onclick="submitForm()" type="button">
+          <span>Confirmar Pedido</span>
+          <span class="btn-arrow">▸▸</span>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SUCCESS -->
+  <div class="success-screen" id="success">
+    <div class="success-mark">✓</div>
+    <h2 class="success-title">Pedido<br>Confirmado</h2>
+    <p class="success-msg">
+      Seu pedido foi registrado no protocolo.<br>
+      Um arquivo Excel com o seu pedido foi baixado automaticamente.<br><br>
+      <strong>Aguarde a confirmação no WhatsApp em até 48h.</strong>
+    </p>
+    <div class="success-tag">NO ONE LEFT BEHIND</div>
+
+    <div class="export-admin">
+      <p>Área administrativa · exportar base completa</p>
+      <button class="btn-export" onclick="exportAllOrders()" type="button">Exportar base Excel completa</button>
+    </div>
+  </div>
+
+  <!-- BOTTOM TICKER -->
+  <footer class="fp-ticker">
+    <div class="fp-ticker-track">
+      <span>▶ F*CK PACE // NO ONE LEFT BEHIND // ONLY MEMBERS // DROP_002 // PRÉ-VENDA ABERTA // VAGAS LIMITADAS //</span>
+      <span>▶ F*CK PACE // NO ONE LEFT BEHIND // ONLY MEMBERS // DROP_002 // PRÉ-VENDA ABERTA // VAGAS LIMITADAS //</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+/* ─── INIT PRODUCT IMAGES ─── */
+function initImages() {
+  document.getElementById('img-mc').src         = IMGS.mc_branca;
+  document.getElementById('img-ml').src         = IMGS.ml_branca;
+  document.getElementById('img-bone').src       = IMGS.bone_rc;
+  document.getElementById('img-combo-bone').src = IMGS.bone_rc;
+  document.getElementById('img-combo2-bone').src = IMGS.bone_rc;
+}
+
+/* ─── STATE ─── */
+const state = {
+  nome:'', tel:'', cpf:'',
+  mc:        {color:'branca', size:null, qty:0, price:100},
+  ml:        {color:'branca', size:null, qty:0, price:110},
+  bone_rc:   {qty:0, price:90},
+  bone_globo:{qty:0, price:90},
+  combo:     {sleeve:'mc', color:'branca', size:null, bone_model:'rc', qty:0, price:180},
+  combo2:    {s1:{sleeve:'mc',color:'branca',size:null}, s2:{sleeve:'mc',color:'branca',size:null}, bone_model:'rc', qty:0, price:250},
+  comprovante: null,
+};
+
+initImages();
+
+/* ─── LIVE TIMESTAMP IN TOPBAR ─── */
+function updateStamp() {
+  const stamp = new Date().toISOString().replace('T',' ').slice(0,19) + 'Z';
+  const el = document.getElementById('topbar-stamp');
+  if (el) el.textContent = stamp;
+}
+updateStamp();
+setInterval(updateStamp, 1000);
+
+/* ─── FIT PRODUCT-TILE HEADER TO ONE LINE ─── */
+function fitTileNames() {
+  document.querySelectorAll('.prod-tile').forEach(function(tile){
+    var left = tile.querySelector('.tile-left');
+    var name = tile.querySelector('.tile-name');
+    if (!left || !name) return;
+    name.style.fontSize = '';            // reset to CSS value
+    var fs = parseFloat(getComputedStyle(name).fontSize);
+    // shrink the name only until the whole tile stops overflowing (stays 1 line)
+    var guard = 0;
+    while (tile.scrollWidth > tile.clientWidth + 1 && fs > 8 && guard < 60) {
+      fs -= 0.5; name.style.fontSize = fs + 'px'; guard++;
+    }
+  });
+}
+window.addEventListener('load', fitTileNames);
+window.addEventListener('resize', fitTileNames);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitTileNames);
+setTimeout(fitTileNames, 300);
+
+
+/* ─── HERO BANNER (embedded iframe) ─── */
+(function(){
+  var frame = document.getElementById('hero-frame');
+  window.addEventListener('message', function(e){
+    var d = e.data || {};
+    if (d.type === 'fp-hero-height' && frame && d.h) {
+      frame.style.height = d.h + 'px';
+    } else if (d.type === 'fp-hero-cta') {
+      var target = document.getElementById('form-top');
+      if (target) {
+        var y = target.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }
+  });
+})();
+
+/* ─── ACCORDION ─── */
+function toggleProduct(prod) {
+  var tile   = document.getElementById('tile-'+prod);
+  var detail = document.getElementById('detail-'+prod);
+  var isOpen = tile.classList.contains('open');
+  tile.classList.toggle('open', !isOpen);
+  detail.classList.toggle('open', !isOpen);
+}
+
+/* ─── BONÉ PREVIEW (image only, no exclusive selection) ─── */
+function selectBonePreview(model, el) {
+  document.querySelectorAll('#model-bone .color-chip').forEach(function(c){ c.classList.remove('active'); });
+  el.classList.add('active');
+  document.getElementById('img-bone').src = IMGS['bone_'+model];
+}
+
+/* ─── COMBO 2 (2 camisetas + boné) ─── */
+function updateC2Loop(n){
+  var s = state.combo2['s'+n];
+  var loop = document.getElementById('loop-c2s'+n);
+  if (loop) loop.src = 'product-loop.html?product='+s.sleeve+'-'+s.color+'&mini=1';
+  var label = document.getElementById('loop-label-c2s'+n);
+  if (label) label.textContent = 'CAMISETA '+n+' · '+(s.sleeve==='ml'?'MANGA LONGA':'MANGA CURTA')+' '+(s.color==='preta'?'PRETA':'BRANCA');
+}
+function selectC2Sleeve(n, sleeve, el){
+  document.querySelectorAll('#sleeve-c2s'+n+' .color-chip').forEach(function(c){ c.classList.remove('active'); });
+  el.classList.add('active');
+  state.combo2['s'+n].sleeve = sleeve;
+  updateC2Loop(n);
+}
+function selectC2Color(n, color, el){
+  document.querySelectorAll('#color-c2s'+n+' .color-chip').forEach(function(c){ c.classList.remove('active'); });
+  el.classList.add('active');
+  state.combo2['s'+n].color = color;
+  updateC2Loop(n);
+}
+function selectC2Size(n, size, el){
+  document.querySelectorAll('#size-c2s'+n+' .size-btn').forEach(function(b){ b.classList.remove('active'); });
+  el.classList.add('active');
+  state.combo2['s'+n].size = size;
+  showErr('err-size-c2s'+n, false);
+}
+function selectC2Bone(bone, el){
+  document.querySelectorAll('#bone-combo2 .color-chip').forEach(function(c){ c.classList.remove('active'); });
+  el.classList.add('active');
+  state.combo2.bone_model = bone;
+  var img = document.getElementById('img-combo2-bone');
+  if (img) img.src = IMGS['bone_'+bone];
+}
+
+/* ─── COMBO SLEEVE ─── */
+function selectComboSleeve(sleeve, el) {
+  document.querySelectorAll('#sleeve-combo .color-chip').forEach(function(c){ c.classList.remove('active'); });
+  el.classList.add('active');
+  state.combo.sleeve = sleeve;
+  updateComboImage();
+}
+
+/* ─── COMBO BONÉ MODEL ─── */
+function selectComboBone(bone, el) {
+  document.querySelectorAll('#bone-combo .color-chip').forEach(function(c){ c.classList.remove('active'); });
+  el.classList.add('active');
+  state.combo.bone_model = bone;
+  document.getElementById('img-combo-bone').src = IMGS['bone_'+bone];
+}
+
+/* ─── COMBO IMAGE UPDATE ─── */
+function updateComboImage() {
+  var loop = document.getElementById('loop-combo');
+  if (loop) loop.src = 'product-loop.html?product='+state.combo.sleeve+'-'+state.combo.color+'&mini=1';
+  var label = document.getElementById('loop-label-combo');
+  if (label) label.textContent = 'LIVE PREVIEW · '+(state.combo.sleeve==='ml'?'MANGA LONGA':'MANGA CURTA')+' '+(state.combo.color==='preta'?'PRETA':'BRANCA');
+}
+
+/* ─── TILE BADGE ─── */
+function updateBadge(prod, qty) {
+  var badge = document.getElementById('badge-'+prod);
+  if (!badge) return;
+  badge.textContent = qty;
+  badge.classList.toggle('show', qty > 0);
+  var tile = document.getElementById('tile-'+prod);
+  if (tile) tile.classList.toggle('has-items', qty > 0);
+  if (typeof fitTileNames === 'function') fitTileNames();
+}
+
+/* ─── NAVIGATION ─── */
+function goTo(n) {
+  [2,3].forEach(i => {
+    document.getElementById('sec'+i).classList.toggle('active', i===n);
+    document.getElementById('tab'+i).classList.toggle('active', i===n);
+  });
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* ─── MASKS ─── */
+document.getElementById('tel').addEventListener('input', function(){
+  let v = this.value.replace(/\D/g,'');
+  if (v.length > 11) v = v.slice(0,11);
+  if (v.length > 6)      v = '('+v.slice(0,2)+') '+v.slice(2,7)+'-'+v.slice(7);
+  else if (v.length > 2) v = '('+v.slice(0,2)+') '+v.slice(2);
+  else if (v.length > 0) v = '('+v;
+  this.value = v;
+});
+document.getElementById('cpf').addEventListener('input', function(){
+  let v = this.value.replace(/\D/g,'');
+  if (v.length > 11) v = v.slice(0,11);
+  if (v.length > 9)      v = v.slice(0,3)+'.'+v.slice(3,6)+'.'+v.slice(6,9)+'-'+v.slice(9);
+  else if (v.length > 6) v = v.slice(0,3)+'.'+v.slice(3,6)+'.'+v.slice(6);
+  else if (v.length > 3) v = v.slice(0,3)+'.'+v.slice(3);
+  this.value = v;
+});
+
+/* ─── STEP 1 ─── */
+function step1Next(){
+  const nome = document.getElementById('nome').value.trim();
+  const tel  = document.getElementById('tel').value.trim();
+  const cpf  = document.getElementById('cpf').value.trim();
+  let ok = true;
+  showErr('err-nome', !nome); if (!nome) ok = false;
+  showErr('err-tel',  tel.replace(/\D/g,'').length < 10); if (tel.replace(/\D/g,'').length < 10) ok = false;
+  showErr('err-cpf',  cpf.replace(/\D/g,'').length < 11); if (cpf.replace(/\D/g,'').length < 11) ok = false;
+  if (!ok) return;
+  state.nome = nome; state.tel = tel; state.cpf = cpf;
+  document.getElementById('tab1').classList.add('done');
+  goTo(2);
+}
+
+/* ─── COLOR SELECTION ─── */
+function selectColor(prod, color, el){
+  document.querySelectorAll('#color-'+prod+' .color-chip').forEach(function(c){ c.classList.remove('active'); });
+  el.classList.add('active');
+  state[prod].color = color;
+  if (prod === 'combo') { updateComboImage(); return; }
+  // Swap the animated loop preview to the selected colorway
+  var loop = document.getElementById('loop-'+prod);
+  if (loop) {
+    loop.src = 'product-loop.html?product='+prod+'-'+color+'&mini=1';
+    var label = document.getElementById('loop-label-'+prod);
+    if (label) label.textContent = 'LIVE PREVIEW · CAMISETA '+prod.toUpperCase()+' '+(color==='preta'?'PRETA':'BRANCA');
+  }
+  var imgEl   = document.getElementById('img-'+prod);
+  var photoEl = document.getElementById('photo-'+prod);
+  if (imgEl) {
+    if (photoEl) photoEl.classList.add('loading');
+    imgEl.onload = function(){ if (photoEl) photoEl.classList.remove('loading'); };
+    imgEl.src = IMGS[prod+'_'+color];
+  }
+}
+
+/* ─── SIZE SELECTION ─── */
+function selectSize(prod, size, el){
+  document.querySelectorAll('#size-'+prod+' .size-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  state[prod].size = size;
+  showErr('err-size-'+prod, false);
+}
+
+/* ─── QUANTITY ─── */
+function changeQty(prod, delta){
+  const key = prod.replace('-','_');
+  const next = Math.max(0, state[key].qty + delta);
+  state[key].qty = next;
+  document.getElementById('qty-'+prod).value = next;
+  if (key === 'bone_rc' || key === 'bone_globo') {
+    const boneTotal = state.bone_rc.qty + state.bone_globo.qty;
+    updateBadge('bone', boneTotal);
+  } else {
+    updateBadge(key, next);
+  }
+}
+
+/* ─── STEP 2 ─── */
+function step2Next(){
+  const has = state.mc.qty>0 || state.ml.qty>0 || state.bone_rc.qty>0 || state.bone_globo.qty>0 || state.combo.qty>0 || state.combo2.qty>0;
+  showErr('err-prod', !has); if (!has) return;
+  let ok = true;
+  if (state.mc.qty>0    && !state.mc.size){    showErr('err-size-mc', true);    ok = false; }
+  if (state.ml.qty>0    && !state.ml.size){    showErr('err-size-ml', true);    ok = false; }
+  if (state.combo.qty>0 && !state.combo.size){ showErr('err-size-combo', true); ok = false; }
+  if (state.combo2.qty>0 && !state.combo2.s1.size){ showErr('err-size-c2s1', true); ok = false; }
+  if (state.combo2.qty>0 && !state.combo2.s2.size){ showErr('err-size-c2s2', true); ok = false; }
+  if (!ok) return;
+  document.getElementById('tab2').classList.add('done');
+  buildSummary();
+  goTo(3);
+}
+
+/* ─── BUILD SUMMARY (cart only — buyer data is entered on the payment step) ─── */
+function buildSummary(){
+  const lines = [];
+  if (state.combo2.qty>0)     lines.push({name:`Combo 2 Cam · ${state.combo2.s1.sleeve.toUpperCase()} ${cap(state.combo2.s1.color)} ${state.combo2.s1.size} + ${state.combo2.s2.sleeve.toUpperCase()} ${cap(state.combo2.s2.color)} ${state.combo2.s2.size} · Boné ${state.combo2.bone_model==='rc'?'RC':'Globo'}`, qty:state.combo2.qty, price:state.combo2.price});
+  if (state.mc.qty>0)         lines.push({name:`Camiseta MC ${cap(state.mc.color)} · ${state.mc.size}`,         qty:state.mc.qty,         price:state.mc.price});
+  if (state.ml.qty>0)         lines.push({name:`Camiseta ML ${cap(state.ml.color)} · ${state.ml.size}`,         qty:state.ml.qty,         price:state.ml.price});
+  if (state.bone_rc.qty>0)    lines.push({name:'Boné Running Club',                                              qty:state.bone_rc.qty,    price:state.bone_rc.price});
+  if (state.bone_globo.qty>0) lines.push({name:'Boné Globo',                                                     qty:state.bone_globo.qty, price:state.bone_globo.price});
+  if (state.combo.qty>0)      lines.push({name:`Combo ${state.combo.sleeve.toUpperCase()} ${cap(state.combo.color)} · ${state.combo.size} · Boné ${state.combo.bone_model==='rc'?'RC':'Globo'}`, qty:state.combo.qty, price:state.combo.price});
+
+  const el = document.getElementById('cart-lines');
+  if (!lines.length) { el.innerHTML = '<div class="cart-empty">— SEM ITENS —</div>'; return; }
+  let total = 0;
+  el.innerHTML = lines.map(l => {
+    const s = l.qty*l.price; total += s;
+    return `<div class="cart-line"><span class="cart-line-name">${l.qty}× ${l.name}</span><span>R$ ${s}</span></div>`;
+  }).join('');
+  document.getElementById('cart-total-val').textContent = 'R$ '+total;
+}
+
+/* ─── PIX COPY ─── */
+function copyPix(){
+  const key = '027058670-90';
+  navigator.clipboard.writeText(key).catch(()=>{
+    const t = document.createElement('textarea');
+    t.value = key; document.body.appendChild(t); t.select(); document.execCommand('copy'); document.body.removeChild(t);
+  });
+  const btn = document.getElementById('btn-copy');
+  btn.textContent = 'Copiado ✓'; btn.classList.add('copied');
+  setTimeout(()=>{ btn.textContent='Copiar'; btn.classList.remove('copied'); }, 2500);
+}
+
+/* ─── FILE UPLOAD ─── */
+function handleFile(input){
+  const f = input.files[0];
+  if (!f) return;
+  state.comprovante = {name:f.name, size:f.size, type:f.type};
+  const icon = f.type.startsWith('image/') ? 'IMG' : 'PDF';
+  document.getElementById('upload-preview-icon').textContent = icon;
+  document.getElementById('upload-preview-name').textContent = f.name+' ('+Math.round(f.size/1024)+'KB)';
+  document.getElementById('upload-preview').classList.add('show');
+  showErr('err-comprovante', false);
+}
+function removeFile(){
+  document.getElementById('comprovante').value = '';
+  state.comprovante = null;
+  document.getElementById('upload-preview').classList.remove('show');
+}
+const ua = document.getElementById('upload-area');
+ua.addEventListener('dragover',  e => { e.preventDefault(); ua.classList.add('dragover'); });
+ua.addEventListener('dragleave', () => ua.classList.remove('dragover'));
+ua.addEventListener('drop', e => {
+  e.preventDefault(); ua.classList.remove('dragover');
+  const f = e.dataTransfer.files[0];
+  if (f) {
+    const dt = new DataTransfer(); dt.items.add(f);
+    document.getElementById('comprovante').files = dt.files;
+    handleFile(document.getElementById('comprovante'));
+  }
+});
+
+/* ─── SUBMIT ─── */
+function submitForm(){
+  // validate buyer data (now entered on this step)
+  const nome = document.getElementById('nome').value.trim();
+  const tel  = document.getElementById('tel').value.trim();
+  const cpf  = document.getElementById('cpf').value.trim();
+  let ok = true;
+  showErr('err-nome', !nome); if (!nome) ok = false;
+  showErr('err-tel',  tel.replace(/\D/g,'').length < 10); if (tel.replace(/\D/g,'').length < 10) ok = false;
+  showErr('err-cpf',  cpf.replace(/\D/g,'').length < 11); if (cpf.replace(/\D/g,'').length < 11) ok = false;
+  if (!state.comprovante) { showErr('err-comprovante', true); ok = false; }
+  if (!ok) return;
+  state.nome = nome; state.tel = tel; state.cpf = cpf;
+  const order = buildOrderObject();
+  saveOrder(order);
+  exportSingleOrder(order);
+  document.getElementById('form-container').style.display = 'none';
+  document.getElementById('success').classList.add('show');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* ─── BUILD ORDER OBJECT ─── */
+function buildOrderObject(){
+  const ts = new Date();
+  const total =
+    state.combo2.qty*state.combo2.price +
+    state.mc.qty*state.mc.price +
+    state.ml.qty*state.ml.price +
+    state.bone_rc.qty*state.bone_rc.price +
+    state.bone_globo.qty*state.bone_globo.price +
+    state.combo.qty*state.combo.price;
+  return {
+    timestamp:      ts.toLocaleString('pt-BR'),
+    nome:           state.nome,
+    telefone:       state.tel,
+    cpf:            state.cpf,
+    cam_mc_cor:     state.mc.qty>0    ? cap(state.mc.color)    : '',
+    cam_mc_tam:     state.mc.qty>0    ? state.mc.size           : '',
+    cam_mc_qtd:     state.mc.qty,
+    cam_ml_cor:     state.ml.qty>0    ? cap(state.ml.color)    : '',
+    cam_ml_tam:     state.ml.qty>0    ? state.ml.size           : '',
+    cam_ml_qtd:     state.ml.qty,
+    bone_rc_qtd:    state.bone_rc.qty,
+    bone_globo_qtd: state.bone_globo.qty,
+    combo_manga:    state.combo.qty>0 ? state.combo.sleeve.toUpperCase() : '',
+    combo_cor:      state.combo.qty>0 ? cap(state.combo.color)  : '',
+    combo_tam:      state.combo.qty>0 ? state.combo.size         : '',
+    combo_bone:     state.combo.qty>0 ? (state.combo.bone_model==='rc'?'Running Club':'Globo') : '',
+    combo_qtd:      state.combo.qty,
+    combo2_cam1:    state.combo2.qty>0 ? (state.combo2.s1.sleeve.toUpperCase()+' '+cap(state.combo2.s1.color)+' '+state.combo2.s1.size) : '',
+    combo2_cam2:    state.combo2.qty>0 ? (state.combo2.s2.sleeve.toUpperCase()+' '+cap(state.combo2.s2.color)+' '+state.combo2.s2.size) : '',
+    combo2_bone:    state.combo2.qty>0 ? (state.combo2.bone_model==='rc'?'Running Club':'Globo') : '',
+    combo2_qtd:     state.combo2.qty,
+    total:          total,
+    comprovante:    state.comprovante ? state.comprovante.name : '',
+    pago:           'Aguardando confirmação',
+  };
+}
+
+/* ─── LOCALSTORAGE ─── */
+function saveOrder(order){
+  try {
+    const raw = localStorage.getItem('fprc_orders') || '[]';
+    const arr = JSON.parse(raw);
+    arr.push(order);
+    localStorage.setItem('fprc_orders', JSON.stringify(arr));
+  } catch(e){}
+}
+function loadOrders(){
+  try { return JSON.parse(localStorage.getItem('fprc_orders') || '[]'); } catch(e){ return []; }
+}
+
+/* ─── EXCEL — single ─── */
+function exportSingleOrder(order){
+  const headers = ['Data/Hora','Nome','Telefone','CPF',
+    'Cam.MC Cor','Cam.MC Tam','Cam.MC Qtd',
+    'Cam.ML Cor','Cam.ML Tam','Cam.ML Qtd',
+    'Boné RC Qtd','Boné Globo Qtd',
+    'Combo Manga','Combo Cor','Combo Tam','Combo Boné','Combo Qtd',
+    'Combo2 Cam1','Combo2 Cam2','Combo2 Boné','Combo2 Qtd',
+    'Total (R$)','Comprovante','Status Pag.'];
+  const row = [
+    order.timestamp, order.nome, order.telefone, order.cpf,
+    order.cam_mc_cor, order.cam_mc_tam, order.cam_mc_qtd,
+    order.cam_ml_cor, order.cam_ml_tam, order.cam_ml_qtd,
+    order.bone_rc_qtd, order.bone_globo_qtd,
+    order.combo_manga, order.combo_cor, order.combo_tam, order.combo_bone, order.combo_qtd,
+    order.combo2_cam1, order.combo2_cam2, order.combo2_bone, order.combo2_qtd,
+    order.total, order.comprovante, order.pago,
+  ];
+
+  const ws = XLSX.utils.aoa_to_sheet([headers, row]);
+  ws['!cols'] = headers.map(h => ({wch: Math.max(h.length, 14)}));
+  headers.forEach((_,i) => {
+    const cell = XLSX.utils.encode_cell({r:0,c:i});
+    if (!ws[cell]) return;
+    ws[cell].s = {font:{bold:true},fill:{fgColor:{rgb:'F2703B'}},alignment:{horizontal:'center'}};
+  });
+
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Pedido');
+  const date = new Date().toISOString().slice(0,10);
+  XLSX.writeFile(wb, `FPRC_DROP2_Pedido_${order.nome.split(' ')[0]}_${date}.xlsx`);
+}
+
+/* ─── EXCEL — all (admin) ─── */
+function exportAllOrders(){
+  const orders = loadOrders();
+  if (!orders.length) { alert('Nenhum pedido registrado neste dispositivo ainda.'); return; }
+  const headers = ['Data/Hora','Nome','Telefone','CPF',
+    'Cam.MC Cor','Cam.MC Tam','Cam.MC Qtd',
+    'Cam.ML Cor','Cam.ML Tam','Cam.ML Qtd',
+    'Boné RC Qtd','Boné Globo Qtd',
+    'Combo Manga','Combo Cor','Combo Tam','Combo Boné','Combo Qtd',
+    'Combo2 Cam1','Combo2 Cam2','Combo2 Boné','Combo2 Qtd',
+    'Total (R$)','Comprovante','Status Pag.'];
+  const rows = orders.map(o => [
+    o.timestamp, o.nome, o.telefone, o.cpf,
+    o.cam_mc_cor, o.cam_mc_tam, o.cam_mc_qtd,
+    o.cam_ml_cor, o.cam_ml_tam, o.cam_ml_qtd,
+    o.bone_rc_qtd, o.bone_globo_qtd,
+    o.combo_manga, o.combo_cor, o.combo_tam, o.combo_bone, o.combo_qtd,
+    o.combo2_cam1, o.combo2_cam2, o.combo2_bone, o.combo2_qtd,
+    o.total, o.comprovante, o.pago,
+  ]);
+  const ws = XLSX.utils.aoa_to_sheet([headers, ...rows]);
+  ws['!cols'] = headers.map(h => ({wch: Math.max(h.length, 14)}));
+
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Pedidos DROP 2');
+
+  const totals = [
+    ['RESUMO DO DROP 2'],
+    ['Total de pedidos', orders.length],
+    ['Receita total (R$)', orders.reduce((s,o)=>s+(o.total||0),0)],
+    ['Total camisetas MC',   orders.reduce((s,o)=>s+(o.cam_mc_qtd||0),0)],
+    ['Total camisetas ML',   orders.reduce((s,o)=>s+(o.cam_ml_qtd||0),0)],
+    ['Total Boné RC',        orders.reduce((s,o)=>s+(o.bone_rc_qtd||0),0)],
+    ['Total Boné Globo',     orders.reduce((s,o)=>s+(o.bone_globo_qtd||0),0)],
+    ['Total combos',         orders.reduce((s,o)=>s+(o.combo_qtd||0),0)],
+    ['Total combos 2x+boné', orders.reduce((s,o)=>s+(o.combo2_qtd||0),0)],
+  ];
+  const ws2 = XLSX.utils.aoa_to_sheet(totals);
+  ws2['!cols'] = [{wch:28},{wch:18}];
+  XLSX.utils.book_append_sheet(wb, ws2, 'Resumo');
+
+  const date = new Date().toISOString().slice(0,10);
+  XLSX.writeFile(wb, `FPRC_DROP2_Base_Completa_${date}.xlsx`);
+}
+
+/* ─── HELPERS ─── */
+function showErr(id, show){ document.getElementById(id).classList.toggle('show', show); }
+function cap(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+</script>
+
+<template id="__bundler_thumbnail" data-bg-color="#0A0A0A">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0A0A0A"/>
+    <circle cx="600" cy="400" r="150" fill="none" stroke="#F2703B" stroke-width="6"/>
+    <ellipse cx="600" cy="400" rx="60" ry="150" fill="none" stroke="#F2703B" stroke-width="4" opacity="0.7"/>
+    <ellipse cx="600" cy="400" rx="120" ry="150" fill="none" stroke="#F2703B" stroke-width="4" opacity="0.5"/>
+    <line x1="450" y1="400" x2="750" y2="400" stroke="#F2703B" stroke-width="4" opacity="0.6"/>
+    <text x="600" y="640" font-family="Arial Black, sans-serif" font-weight="900" font-size="86" fill="#FFFFFF" text-anchor="middle" letter-spacing="4">F*CK PACE</text>
+  </svg>
+</template>
+
+</body>
+</html>
